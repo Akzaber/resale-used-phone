@@ -13,14 +13,15 @@ const BannerItem = ({ banner }) => {
           mobile phones <br /> at lowest price
         </h1>
       </div>
-      <div className="absolute w-1/2 flex text-white text-lg justify-end transform -translate-y-1/2 left-10 top-1/2">
+      <div className="absolute w-2/5 flex text-white text-lg justify-end transform -translate-y-1/2 left-10 top-1/2">
         <p>
-          Best used mobile phone and second hand mobile phones at lowest price.
-          Get the best deals on used android and Samsung, Oneplus, Xiaomi
+          Find second-hand mobile phones for sale near you at the best price.
+          Explore the wide range of used mobile phones from top brands like
+          Apple, Samsung, Oneplus.
         </p>
       </div>
       <div className="absolute flex justify-end transform -translate-y-1/2 left-10 top-3/4">
-        <button className="btn btn-secondary">Learn more</button>
+        <button className="btn">Learn more</button>
       </div>
       <div className="absolute flex justify-end transform -translate-y-1/2 left-5 right-5 bottom-0">
         <a href={`#slide${prev}`} className="btn btn-circle">
