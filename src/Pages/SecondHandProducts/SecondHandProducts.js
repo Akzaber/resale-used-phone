@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import { useLoaderData } from "react-router-dom";
+import BookNowModal from "./BookNowModal/BookNowModal";
 
 const SecondHandProducts = () => {
+  const [productName, setProductName] = useState({});
   const products = useLoaderData();
   return (
     <div>
@@ -29,12 +31,24 @@ const SecondHandProducts = () => {
                 <small>posted-time: {product.postedTime}</small>
               </p>
               <div className="card-actions justify-end">
-                <button className="btn">Book now</button>
+                <label
+                  onClick={() =>
+                    setProductName({
+                      name: product.name,
+                      price: product.resalePrice,
+                    })
+                  }
+                  htmlFor="booking-modal"
+                  className="btn"
+                >
+                  Book now
+                </label>
               </div>
             </div>
           </div>
         ))}
       </div>
+      <BookNowModal productName={productName}></BookNowModal>
     </div>
   );
 };
