@@ -1,0 +1,123 @@
+[
+  {
+    "categoryName": "oneplus",
+    "img": "https://i.ibb.co/DK1htQc/OnePlus.jpg",
+    "oneplusdata" : [
+      {
+        "categoryName": "oneplus",
+        "name": "oneplus 10 pro",
+        "location": "Dhaka Bangladesh",
+        "img": "https://i.ibb.co/HNyCRB0/oneplus1.jpg",
+        "resalePrice": 500,
+        "originalPrice": 830,
+        "yearOfUse": 1,
+        "postedTime": "11 November 2022",
+        "sellerName": "No Name"
+      },
+      {
+        "categoryName": "oneplus",
+        "name": "oneplus 9 pro",
+        "location": "Chittagonj Bangladesh",
+        "img": "https://i.ibb.co/RST2kBT/oneplus2.jpg",
+        "resalePrice": 400,
+        "originalPrice": 630,
+        "yearOfUse": 1.5,
+        "postedTime": "11 November 2022",
+        "sellerName": "No Name"
+      },
+      {
+        "categoryName": "oneplus",
+        "name": "oneplus 8 pro",
+        "location": "Rampura Dhaka",
+        "img": "https://i.ibb.co/HCcSPHC/oneplus3.jpg",
+        "resalePrice": 300,
+        "originalPrice": 520,
+        "yearOfUse": 1.5,
+        "postedTime": "11 November 2022",
+        "sellerName": "No Name"
+      } 
+    ]
+  },
+  {
+    "categoryName": "samsung",
+    "img": "https://i.ibb.co/hcT8Jjv/samsung.jpg",
+    "samsungData": [
+      
+        {
+          "categoryName": "samsung",
+          "name": "samsung galaxy A71",
+          "location": "Dhaka Bangladesh",
+          "img": "https://i.ibb.co/FJJgjzT/samsung1.jpg",
+          "resalePrice": 500,
+          "originalPrice": 830,
+          "yearOfUse": 1,
+          "postedTime": "11 November 2022",
+          "sellerName": "No Name"
+        },
+        {
+          "categoryName": "samsung",
+          "name": "samsung galaxy S21 ultra",
+          "location": "Chittagonj Bangladesh",
+          "img": "https://i.ibb.co/JrWGwQn/samsung2.jpg",
+          "resalePrice": 400,
+          "originalPrice": 630,
+          "yearOfUse": 1,
+          "postedTime": "11 November 2022",
+          "sellerName": "No Name"
+        },
+        {
+          "categoryName": "smasung",
+          "name": "samsung galaxy S22 ultra",
+          "location": "Rampura Dhaka",
+          "img": "https://i.ibb.co/Lz6pJwR/samsung4.jpg",
+          "resalePrice": 300,
+          "originalPrice": 520,
+          "yearOfUse": 1.5,
+          "postedTime": "11 November 2022",
+          "sellerName": "No Name"
+        } 
+      
+    ]
+  },
+  {
+    "categoryName": "iphone",
+    "img": "https://i.ibb.co/M1VKTvr/iphone.jpg",
+    "iphoneData": [
+      
+        {
+          "categoryName": "iphone",
+          "name": "iphone 13 pro max",
+          "location": "Dhaka Bangladesh",
+          "img": "https://i.ibb.co/rxr0CVh/Ha16604ed381c4e73a497528f173b8481i-png-300x300.jpg",
+          "resalePrice": 500,
+          "originalPrice": 830,
+          "yearOfUse": 1,
+          "postedTime": "11 November 2022",
+          "sellerName": "No Name"
+        },
+        {
+          "categoryName": "iphone",
+          "name": "iphone 12 pro max",
+          "location": "Chittagonj Bangladesh",
+          "img": "https://i.ibb.co/qFvtfbK/H219f6f56e32840f58149f84e45e4f5e88-jpg-300x300.jpg",
+          "resalePrice": 400,
+          "originalPrice": 630,
+          "yearOfUse": 1,
+          "postedTime": "11 November 2022",
+          "sellerName": "No Name"
+        },
+        {
+          "categoryName": "iphone",
+          "name": "iphone 11 pro max",
+          "location": "Rampura Dhaka",
+          "img": "https://i.ibb.co/FHBgj6C/H0a299c2558d148b88c14ab6ca9a1c77bh-jpg-300x300.jpg",
+          "resalePrice": 300,
+          "originalPrice": 520,
+          "yearOfUse": 1.5,
+          "postedTime": "11 November 2022",
+          "sellerName": "No Name"
+        } 
+      
+    ]
+  }
+]

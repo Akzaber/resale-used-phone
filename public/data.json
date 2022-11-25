@@ -1,9 +1,9 @@
 [
   {
-    "categoryName": "iphone",
-    "name": "iphone 13 pro max",
+    "categoryName": "samsung",
+    "name": "samsung galaxy A71",
     "location": "Dhaka Bangladesh",
-    "img": "https://i.ibb.co/rxr0CVh/Ha16604ed381c4e73a497528f173b8481i-png-300x300.jpg",
+    "img": "https://i.ibb.co/FJJgjzT/samsung1.jpg",
     "resalePrice": 500,
     "originalPrice": 830,
     "yearOfUse": 1,
@@ -11,10 +11,10 @@
     "sellerName": "No Name"
   },
   {
-    "categoryName": "iphone",
-    "name": "iphone 12 pro max",
+    "categoryName": "samsung",
+    "name": "samsung galaxy S21 ultra",
     "location": "Chittagonj Bangladesh",
-    "img": "https://i.ibb.co/qFvtfbK/H219f6f56e32840f58149f84e45e4f5e88-jpg-300x300.jpg",
+    "img": "https://i.ibb.co/JrWGwQn/samsung2.jpg",
     "resalePrice": 400,
     "originalPrice": 630,
     "yearOfUse": 1,
@@ -22,10 +22,10 @@
     "sellerName": "No Name"
   },
   {
-    "categoryName": "iphone",
-    "name": "iphone 11 pro max",
+    "categoryName": "smasung",
+    "name": "samsung galaxy S22 ultra",
     "location": "Rampura Dhaka",
-    "img": "https://i.ibb.co/FHBgj6C/H0a299c2558d148b88c14ab6ca9a1c77bh-jpg-300x300.jpg",
+    "img": "https://i.ibb.co/Lz6pJwR/samsung4.jpg",
     "resalePrice": 300,
     "originalPrice": 520,
     "yearOfUse": 1.5,
