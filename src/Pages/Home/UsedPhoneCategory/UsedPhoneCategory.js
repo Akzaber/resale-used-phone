@@ -3,7 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 import { Link } from "react-router-dom";
 
 const UsedPhoneCategory = () => {
-  const { data: categories = [] } = useQuery({
+  const { data: categories, isLoading } = useQuery({
     queryKey: ["usedphonecategory"],
     queryFn: async () => {
       const res = await fetch("http://localhost:5000/usedphonecategory");
@@ -11,6 +11,10 @@ const UsedPhoneCategory = () => {
       return data;
     },
   });
+
+  if (isLoading) {
+    return <p>Loading...</p>;
+  }
 
   return (
     <div className="my-10">

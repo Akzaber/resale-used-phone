@@ -3,7 +3,7 @@ import { useLoaderData } from "react-router-dom";
 import BookNowModal from "./BookNowModal/BookNowModal";
 
 const SecondHandProducts = () => {
-  const [productName, setProductName] = useState({});
+  const [productName, setProductName] = useState([]);
   const products = useLoaderData();
   return (
     <div>
@@ -34,8 +34,8 @@ const SecondHandProducts = () => {
                 <label
                   onClick={() =>
                     setProductName({
-                      name: product.name,
-                      price: product.resalePrice,
+                      name: product?.name,
+                      price: product?.resalePrice,
                     })
                   }
                   htmlFor="booking-modal"

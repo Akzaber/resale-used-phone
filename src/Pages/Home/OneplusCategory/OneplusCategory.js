@@ -2,7 +2,7 @@ import React from "react";
 import { useQuery } from "@tanstack/react-query";
 
 const OneplusCategory = () => {
-  const { data: onepluses = [] } = useQuery({
+  const { data: onepluses, isLoading } = useQuery({
     queryKey: ["onepluscollection"],
     queryFn: async () => {
       const res = await fetch("http://localhost:5000/onepluscollection");
@@ -10,6 +10,10 @@ const OneplusCategory = () => {
       return data;
     },
   });
+
+  if (isLoading) {
+    return <p>Loading...</p>;
+  }
   return (
     <div className="my-10">
       <h2 className="text-3xl font-bold mb-4">Oneplus Collection</h2>
