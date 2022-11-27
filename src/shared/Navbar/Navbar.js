@@ -1,7 +1,16 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useContext } from "react";
+import { Link, NavLink } from "react-router-dom";
+import { AuthContext } from "../../contexts/AuthProvider/AuthProvider";
+import { FaUser } from "react-icons/fa";
 
 const Navbar = () => {
+  const { user, logOut } = useContext(AuthContext);
+
+  const handleLogout = () => {
+    logOut()
+      .then(() => {})
+      .catch((err) => console.error(err));
+  };
   return (
     <div className="navbar bg-base-100">
       <div className="navbar-start">
@@ -43,9 +52,36 @@ const Navbar = () => {
           <li>
             <Link to="/">Home</Link>
           </li>
-          <li>
-            <Link to="/login">Login</Link>
-          </li>
+          {user?.uid ? (
+            <>
+              <li>
+                <NavLink to="/dashboard">Dashboard</NavLink>
+              </li>
+              <li>
+                <button onClick={handleLogout}>Sign Out</button>
+              </li>
+              <li className="hidden lg:block">
+                {/* set user avater user image or user fontAwesome Icon */}
+                {user?.uid && (
+                  <div className="avatar">
+                    {user?.photoURL ? (
+                      <div className="w-12 rounded-full">
+                        <img src={user?.photoURL} alt="" />
+                      </div>
+                    ) : (
+                      <>
+                        <FaUser></FaUser>
+                      </>
+                    )}
+                  </div>
+                )}
+              </li>
+            </>
+          ) : (
+            <li>
+              <NavLink to="/login">Login</NavLink>
+            </li>
+          )}
         </ul>
       </div>
     </div>

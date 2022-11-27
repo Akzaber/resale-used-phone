@@ -1,12 +1,31 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../../contexts/AuthProvider/AuthProvider";
 
 const Register = () => {
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit, reset } = useForm();
+  const { createUser, updateUser } = useContext(AuthContext);
 
   const handleRegister = (data) => {
-    console.log(data);
+    createUser(data.email, data.password)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+        userUpdate(data);
+        reset();
+      })
+      .catch((error) => console.error(error));
+  };
+
+  const userUpdate = (data) => {
+    const userInfo = {
+      displayName: data.name,
+      photoURL: data.photoURL,
+    };
+    updateUser(userInfo)
+      .then(() => {})
+      .catch((err) => console.error(err));
   };
   return (
     <div className="hero min-h-screen">
@@ -62,11 +81,6 @@ const Register = () => {
               placeholder="password"
               className="input input-bordered"
             />
-            <label className="label">
-              <Link className="label-text-alt link link-hover">
-                Forgot password?
-              </Link>
-            </label>
           </div>
           <select
             {...register("userType")}
