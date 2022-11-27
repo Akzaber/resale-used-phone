@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, Outlet } from "react-router-dom";
+import { NavLink, Outlet } from "react-router-dom";
 import Footer from "../../shared/Footer/Footer";
 import Navbar from "../../shared/Navbar/Navbar";
 
@@ -24,16 +24,26 @@ const DashboardLayout = () => {
             ></label>
             <ul className="menu p-4 w-80 bg-base-100 text-base-content">
               <li>
-                <Link to="/dashboard/myorders">My Orders</Link>
+                <NavLink
+                  className={({ isActive }) =>
+                    isActive ? "active" : undefined
+                  }
+                  to="/dashboard/myorders"
+                >
+                  My Orders
+                </NavLink>
               </li>
               <li>
-                <Link to="/dashboard/addproduct">Add Product</Link>
+                <NavLink to="/dashboard/addproduct">Add Product</NavLink>
               </li>
               <li>
-                <Link to="/dashboard/allsellers">All Sellers</Link>
+                <NavLink to="/dashboard/myproducts">My Products</NavLink>
               </li>
               <li>
-                <Link to="/dashboard/allbyers">All Byers</Link>
+                <NavLink to="/dashboard/allsellers">All Sellers</NavLink>
+              </li>
+              <li>
+                <NavLink to="/dashboard/allbyers">All Byers</NavLink>
               </li>
             </ul>
           </div>

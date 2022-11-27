@@ -6,6 +6,7 @@ import AllByers from "../../Pages/Dashboard/AllByers/AllByers";
 import AllSellers from "../../Pages/Dashboard/AllSellers/AllSellers";
 import Dashboard from "../../Pages/Dashboard/Dashboard/Dashboard";
 import MyOrders from "../../Pages/Dashboard/MyOrders/MyOrders";
+import MyProducts from "../../Pages/Dashboard/MyProducts/MyProducts";
 import Home from "../../Pages/Home/Home/Home";
 import Login from "../../Pages/Login/Login/Login";
 import Register from "../../Pages/Login/Register/Register";
@@ -64,6 +65,10 @@ const router = createBrowserRouter([
       {
         path: "/dashboard/allbyers",
         element: <AllByers></AllByers>,
+      },
+      {
+        path: "/dashboard/myproducts",
+        element: <MyProducts></MyProducts>,
       },
     ],
   },
