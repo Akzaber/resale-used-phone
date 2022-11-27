@@ -1,11 +1,18 @@
 import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../contexts/AuthProvider/AuthProvider";
+import toast from "react-hot-toast";
 
 const Register = () => {
-  const { register, handleSubmit, reset } = useForm();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    reset,
+  } = useForm();
   const { createUser, updateUser } = useContext(AuthContext);
+  const navgate = useNavigate();
 
   const handleRegister = (data) => {
     createUser(data.email, data.password)
@@ -14,6 +21,8 @@ const Register = () => {
         console.log(user);
         userUpdate(data);
         reset();
+        toast.success("user created successfully");
+        navgate("/");
       })
       .catch((error) => console.error(error));
   };
@@ -39,12 +48,15 @@ const Register = () => {
               <span className="label-text">Name</span>
             </label>
             <input
-              {...register("name", { required: true })}
+              {...register("name", { required: "Name is required" })}
               type="text"
               name="name"
               placeholder="your name"
               className="input input-bordered"
             />
+            {errors.name && (
+              <p className="text-error">{errors.name?.message}</p>
+            )}
           </div>
           <div className="form-control">
             <label className="label">
@@ -57,30 +69,41 @@ const Register = () => {
               placeholder="photoURL"
               className="input input-bordered"
             />
+            {errors.photoURL && (
+              <p className="text-error">{errors.photoURL?.message}</p>
+            )}
           </div>
           <div className="form-control">
             <label className="label">
               <span className="label-text">Email</span>
             </label>
             <input
-              {...register("email", { required: true })}
+              {...register("email", { required: "Email is required" })}
               type="email"
               name="email"
               placeholder="email"
               className="input input-bordered"
             />
+            {errors.email && (
+              <p className="text-error">{errors.email?.message}</p>
+            )}
           </div>
           <div className="form-control">
             <label className="label">
               <span className="label-text">Password</span>
             </label>
             <input
-              {...register("password", { required: true })}
+              {...register("password", {
+                required: "Password must be 6 character or long",
+              })}
               type="password"
               name="password"
               placeholder="password"
               className="input input-bordered"
             />
+            {errors.password && (
+              <p className="text-error">{errors.password?.message}</p>
+            )}
           </div>
           <select
             {...register("userType")}
