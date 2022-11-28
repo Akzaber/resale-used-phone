@@ -21,8 +21,20 @@ const Register = () => {
         console.log(user);
         userUpdate(data);
         reset();
-        toast.success("user created successfully");
-        navgate("/");
+        fetch("http://localhost:5000/users", {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(data),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.acknowledged === true) {
+              toast.success("New user created successfully");
+              navgate("/");
+            }
+          });
       })
       .catch((error) => console.error(error));
   };
@@ -36,6 +48,7 @@ const Register = () => {
       .then(() => {})
       .catch((err) => console.error(err));
   };
+
   return (
     <div className="hero min-h-screen">
       <div className="card w-96 shadow-xl">
@@ -110,7 +123,7 @@ const Register = () => {
             name="userType"
             className="select select-bordered w-full max-w-xs"
           >
-            <option selected>user</option>
+            <option defaultValue="user">user</option>
             <option>seller</option>
           </select>
           <div className="form-control mt-6">

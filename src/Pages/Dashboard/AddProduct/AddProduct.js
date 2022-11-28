@@ -11,7 +11,7 @@ const AddProduct = () => {
   const navigate = useNavigate();
 
   const handleAddProduct = (data) => {
-    const image = data.image[0];
+    const image = data?.image[0];
     const formData = new FormData();
     formData.append("image", image);
     const url = `https://api.imgbb.com/1/upload?key=${imageHostKey}`;
@@ -22,9 +22,24 @@ const AddProduct = () => {
       .then((res) => res.json())
       .then((imgData) => {
         if (imgData.success) {
-          data.image = imgData.data.url;
+          data.image = imgData?.data?.url;
           const product = data;
           console.log(product);
+
+          // fetch(
+          //   `http://localhost:5000/usedphonecategory?categoryName=${data.categoryName}`,
+          //   {
+          //     method: "POST",
+          //     headers: {
+          //       "content-type": "application/json",
+          //     },
+          //     body: JSON.stringify(data),
+          //   }
+          // )
+          //   .then((res) => res.json())
+          //   .then((data) => {
+          //     console.log(data);
+          //   });
 
           fetch("http://localhost:5000/addproducts", {
             method: "POST",
@@ -55,7 +70,7 @@ const AddProduct = () => {
           name="categoryName"
           className="select select-bordered w-full"
         >
-          <option selected>oneplus</option>
+          <option defaultValue="oneplus">oneplus</option>
           <option>samsung</option>
           <option>iphone</option>
         </select>
@@ -109,7 +124,7 @@ const AddProduct = () => {
           name="productCondition"
           className="select select-bordered w-full"
         >
-          <option selected>excellent</option>
+          <option defaultValue="excellent">excellent</option>
           <option>good</option>
           <option>fair</option>
         </select>

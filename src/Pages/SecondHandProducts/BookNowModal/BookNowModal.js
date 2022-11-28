@@ -1,9 +1,10 @@
-import React from "react";
-// import { useForm } from "react-hook-form";
+import React, { useContext } from "react";
+import toast from "react-hot-toast";
+import { AuthContext } from "../../../contexts/AuthProvider/AuthProvider";
 
 const BookNowModal = ({ productName }) => {
+  const { user } = useContext(AuthContext);
   const { name, price } = productName;
-  // const { register, handleSubmit } = useForm();
 
   const handleBooking = (event) => {
     event.preventDefault();
@@ -16,13 +17,33 @@ const BookNowModal = ({ productName }) => {
     const phone = form.phone.value;
     const location = form.location.value;
 
-    console.log(userName, email, itemName, productPrice, phone, location);
-    form.reset();
+    const booking = {
+      userName,
+      email,
+      itemName,
+      productPrice,
+      phone,
+      location,
+    };
+
+    fetch("http://localhost:5000/bookings", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(booking),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.acknowledged === true) {
+          toast.success("Item Booked Successfully");
+          form.reset();
+        }
+      });
   };
 
   return (
     <>
-      {/* Put this part before </body> tag */}
       <input type="checkbox" id="booking-modal" className="modal-toggle" />
       <div className="modal">
         <div className="modal-box w-96 p-4 relative">
@@ -37,42 +58,38 @@ const BookNowModal = ({ productName }) => {
             className="grid grid-cols-1 w-full mt-10 gap-4"
           >
             <input
-              // {...register("userName")}
-              type="text"
+              type="name"
+              defaultValue={user?.displayName}
               placeholder="your name"
               className="input input-bordered w-full"
               name="userName"
             />
             <input
-              // {...register("email")}
               type="email"
+              defaultValue={user?.email}
               placeholder="your email"
               className="input input-bordered w-full"
               name="email"
             />
             <input
-              // {...register("itemName")}
               type="text"
               defaultValue={name}
               className="input input-bordered w-full"
               name="itemName"
             />
             <input
-              // {...register("productPrice")}
               type="number"
               defaultValue={price}
               className="input input-bordered w-full"
               name="productPrice"
             />
             <input
-              // {...register("phone")}
               type="number"
               placeholder="your phone number"
               className="input input-bordered w-full"
               name="phone"
             />
             <input
-              // {...register("location")}
               type="text"
               placeholder="enter your location"
               className="input input-bordered w-full"
