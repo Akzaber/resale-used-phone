@@ -1,8 +1,9 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../contexts/AuthProvider/AuthProvider";
 import toast from "react-hot-toast";
+import useToken from "../../../hooks/useToken";
 
 const Register = () => {
   const {
@@ -12,7 +13,15 @@ const Register = () => {
     reset,
   } = useForm();
   const { createUser, updateUser } = useContext(AuthContext);
+  const [registerUserEmail, setRegisterUserEmail] = useState("");
+  const [token] = useToken(registerUserEmail);
   const navgate = useNavigate();
+
+  if (token) {
+    toast.success("New user created successfully");
+    reset();
+    navgate("/");
+  }
 
   const handleRegister = (data) => {
     createUser(data.email, data.password)
@@ -20,7 +29,8 @@ const Register = () => {
         const user = result.user;
         console.log(user);
         userUpdate(data);
-        reset();
+
+        // reset();
         fetch("http://localhost:5000/users", {
           method: "POST",
           headers: {
@@ -29,14 +39,13 @@ const Register = () => {
           body: JSON.stringify(data),
         })
           .then((res) => res.json())
-          .then((data) => {
-            if (data.acknowledged === true) {
-              toast.success("New user created successfully");
-              navgate("/");
+          .then((result) => {
+            if (result.acknowledged === true) {
             }
           });
       })
       .catch((error) => console.error(error));
+    setRegisterUserEmail(data.email);
   };
 
   const userUpdate = (data) => {

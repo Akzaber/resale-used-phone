@@ -3,16 +3,23 @@ import { useForm } from "react-hook-form";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../contexts/AuthProvider/AuthProvider";
 import toast from "react-hot-toast";
+import useToken from "../../../hooks/useToken";
 
 const Login = () => {
-  const { register, handleSubmit, reset } = useForm();
+  const [signInUserEmail, setSignInUserEmail] = useState("");
   const [userEmail, setUserEmail] = useState("");
   const [signInError, setSignInError] = useState("");
+  const { register, handleSubmit, reset } = useForm();
   const { signIn, googleSignIn, forgetPassword } = useContext(AuthContext);
+  const [token] = useToken(signInUserEmail);
   const navigate = useNavigate();
   const location = useLocation();
 
   const from = location.state?.from?.pathname || "/";
+
+  if (token) {
+    navigate(from, { replace: true });
+  }
 
   const handleLogin = (data) => {
     setSignInError("");
@@ -20,10 +27,10 @@ const Login = () => {
       .then((result) => {
         const user = result.user;
         console.log(user);
-        navigate(from, { replace: true });
+        setSignInUserEmail(data?.email);
       })
       .catch((error) => {
-        const message = error.message;
+        const message = error?.message;
         setSignInError(message);
         console.error(error);
       });
@@ -119,9 +126,13 @@ const Login = () => {
               </Link>
             </small>
           </p>
+          <div className="divider">OR</div>
         </form>
-        <div>
-          <button onClick={handleGoogleSignin} className="btn w-full">
+        <div className="p-8 pt-0">
+          <button
+            onClick={handleGoogleSignin}
+            className="btn btn-outline w-full"
+          >
             Coutinue With Google
           </button>
         </div>

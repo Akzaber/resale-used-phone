@@ -38,7 +38,7 @@ const AllByers = () => {
         <thead>
           <tr>
             <th></th>
-            <th>Seller Profile</th>
+            <th>Byer Profile</th>
             <th>Name</th>
             <th>Email</th>
             <th>Operation</th>

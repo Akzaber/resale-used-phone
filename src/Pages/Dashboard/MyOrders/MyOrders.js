@@ -11,10 +11,15 @@ const MyOrders = () => {
     isLoading,
     refetch,
   } = useQuery({
-    queryKey: ["myorders", user],
+    queryKey: ["myorders", user?.email],
     queryFn: async () => {
       const res = await fetch(
-        `http://localhost:5000/bookings?email=${user?.email}`
+        `http://localhost:5000/bookings?email=${user?.email}`,
+        {
+          headers: {
+            authorization: `bearer ${localStorage.getItem("accessToken")}`, //newadd
+          },
+        }
       );
       const data = await res.json();
       return data;
@@ -55,25 +60,26 @@ const MyOrders = () => {
             </tr>
           </thead>
           <tbody>
-            {orders.map((order, i) => (
-              <tr key={order._id}>
-                <th>{i + 1}</th>
-                <td>{order.itemName}</td>
-                <td>{order.productPrice}</td>
-                <td>{order.userName}</td>
-                <td>{order.email}</td>
-                <td>{order.phone}</td>
-                <td>{order.location}</td>
-                <td>
-                  <button
-                    onClick={() => handleDelete(order._id)}
-                    className="btn btn-xs"
-                  >
-                    delete
-                  </button>
-                </td>
-              </tr>
-            ))}
+            {orders &&
+              orders.map((order, i) => (
+                <tr key={order._id}>
+                  <th>{i + 1}</th>
+                  <td>{order.itemName}</td>
+                  <td>{order.productPrice}</td>
+                  <td>{order.userName}</td>
+                  <td>{order.email}</td>
+                  <td>{order.phone}</td>
+                  <td>{order.location}</td>
+                  <td>
+                    <button
+                      onClick={() => handleDelete(order._id)}
+                      className="btn btn-xs"
+                    >
+                      delete
+                    </button>
+                  </td>
+                </tr>
+              ))}
           </tbody>
         </table>
       </div>

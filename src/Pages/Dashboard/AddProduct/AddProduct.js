@@ -24,10 +24,8 @@ const AddProduct = () => {
         if (imgData.success) {
           data.image = imgData?.data?.url;
           const product = data;
-          console.log(product);
-
           // fetch(
-          //   `http://localhost:5000/usedphonecategory?categoryName=${data.categoryName}`,
+          //   `http://localhost:5000/usedphonecategory?categoryName=${product.categoryName}`,
           //   {
           //     method: "POST",
           //     headers: {
@@ -46,7 +44,7 @@ const AddProduct = () => {
             headers: {
               "content-type": "application/json",
             },
-            body: JSON.stringify(data),
+            body: JSON.stringify(product),
           })
             .then((res) => res.json())
             .then((data) => {

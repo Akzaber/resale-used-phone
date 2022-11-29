@@ -11,7 +11,6 @@ import {
   signOut,
   updateProfile,
 } from "firebase/auth";
-import { useQuery } from "@tanstack/react-query";
 
 export const AuthContext = createContext();
 const auth = getAuth(app);
@@ -20,15 +19,6 @@ const googleProvider = new GoogleAuthProvider();
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
-
-  const { data = [] } = useQuery({
-    queryKey: ["users"],
-    queryFn: async () => {
-      const res = await fetch("http://localhost:5000/users");
-      const data = res.json();
-      return data;
-    },
-  });
 
   // CreateUser from register or signUp page--
   const createUser = (email, password) => {
@@ -76,7 +66,6 @@ const AuthProvider = ({ children }) => {
   const authInfo = {
     user,
     loading,
-    data,
     createUser,
     signIn,
     googleSignIn,

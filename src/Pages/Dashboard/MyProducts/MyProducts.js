@@ -6,7 +6,11 @@ import toast from "react-hot-toast";
 const MyProducts = () => {
   const [handleBtn, setHandleBtn] = useState(false);
   const { user } = useContext(AuthContext);
-  const { data: products = [] } = useQuery({
+  const {
+    data: products,
+    isLoading,
+    refetch,
+  } = useQuery({
     queryKey: ["addproducts"],
     queryFn: async () => {
       const res = await fetch(
@@ -37,6 +41,23 @@ const MyProducts = () => {
         }
       });
   };
+
+  const handleDelete = (id) => {
+    fetch(`http://localhost:5000/addproducts/${id}`, {
+      method: "DELETE",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.deletedCount > 0) {
+          refetch();
+          toast.success("Deleted Successfully");
+        }
+      });
+  };
+
+  if (isLoading) {
+    return <p>Loading...</p>;
+  }
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-4">
@@ -79,7 +100,12 @@ const MyProducts = () => {
                   >
                     Advertise
                   </button>
-                  <button className="btn btn-xs">Delete</button>
+                  <button
+                    onClick={() => handleDelete(product._id)}
+                    className="btn btn-xs"
+                  >
+                    Delete
+                  </button>
                 </div>
               </div>
             </div>

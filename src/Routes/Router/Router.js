@@ -77,6 +77,18 @@ const router = createBrowserRouter([
       },
     ],
   },
+  {
+    path: "*",
+    element: (
+      <div>
+        <img
+          className="max-h-screen mx-auto"
+          src="https://i.ibb.co/Cw8DpRr/6333064.jpg"
+          alt=""
+        />
+      </div>
+    ),
+  },
 ]);
 
 export default router;
