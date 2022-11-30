@@ -25,7 +25,7 @@ const Register = () => {
         userUpdate(data);
 
         // reset();
-        fetch("http://localhost:5000/users", {
+        fetch("https://used-products-resale-server-beta.vercel.app/users", {
           method: "POST",
           headers: {
             "content-type": "application/json",

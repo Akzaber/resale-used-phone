@@ -10,14 +10,16 @@ const AllByers = () => {
   } = useQuery({
     queryKey: ["byers"],
     queryFn: async () => {
-      const res = await fetch("http://localhost:5000/users?userType=user");
+      const res = await fetch(
+        "https://used-products-resale-server-beta.vercel.app/users?userType=user"
+      );
       const data = await res.json();
       return data;
     },
   });
 
   const handleDelete = (id) => {
-    fetch(`http://localhost:5000/users/${id}`, {
+    fetch(`https://used-products-resale-server-beta.vercel.app/users/${id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())
@@ -31,7 +33,7 @@ const AllByers = () => {
 
   // const handleMakeAdmin = (type) => {
   //   if (type === "user") {
-  //     fetch(`http://localhost:5000/users?userType=${type}`, {
+  //     fetch(`https://used-products-resale-server-beta.vercel.app/users?userType=${type}`, {
   //       method: "PUT",
   //     })
   //       .then((res) => res.json())

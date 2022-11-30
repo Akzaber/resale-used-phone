@@ -5,7 +5,9 @@ const OneplusCategory = () => {
   const { data: onepluses, isLoading } = useQuery({
     queryKey: ["onepluscollection"],
     queryFn: async () => {
-      const res = await fetch("http://localhost:5000/onepluscollection");
+      const res = await fetch(
+        "https://used-products-resale-server-beta.vercel.app/onepluscollection"
+      );
       const data = await res.json();
       return data;
     },

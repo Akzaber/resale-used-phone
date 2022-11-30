@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthProvider/AuthProvider";
 import { FaUser } from "react-icons/fa";
 
@@ -73,22 +73,30 @@ const Navbar = () => {
             )}
           </ul>
         </div>
-        <Link to="/" className="uppercase md:text-2xl font-bold">
-          Resale Mobile Phone
+        <Link
+          to="/"
+          className="uppercase md:block md:text-2xl text-primary font-bold"
+        >
+          Resale <span className="text-black">Mobile</span> Phone
         </Link>
       </div>
       <div className="navbar-end hidden lg:flex">
         <ul className="menu menu-horizontal p-0">
           <li>
-            <Link to="/">Home</Link>
+            <NavLink
+              className={({ isActive }) => (isActive ? "active" : undefined)}
+              to="/"
+            >
+              Home
+            </NavLink>
           </li>
           <li>
-            <Link to="/blog">Blog</Link>
+            <NavLink to="/blog">Blog</NavLink>
           </li>
           {user?.uid ? (
             <>
               <li>
-                <Link to="/dashboard">Dashboard</Link>
+                <NavLink to="/dashboard">Dashboard</NavLink>
               </li>
               <li>
                 <button onClick={handleLogout}>Sign Out</button>
@@ -112,7 +120,7 @@ const Navbar = () => {
             </>
           ) : (
             <li>
-              <Link to="/login">Login</Link>
+              <NavLink to="/login">Login</NavLink>
             </li>
           )}
         </ul>

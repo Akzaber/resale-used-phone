@@ -5,7 +5,9 @@ const SamsungCategory = () => {
   const { data: samsungs, isLoading } = useQuery({
     queryKey: ["samsungcollection"],
     queryFn: async () => {
-      const res = await fetch("http://localhost:5000/samsungcollection");
+      const res = await fetch(
+        "https://used-products-resale-server-beta.vercel.app/samsungcollection"
+      );
       const data = await res.json();
       return data;
     },

@@ -15,7 +15,7 @@ const MyOrders = () => {
     queryFn: async () => {
       if (user?.email) {
         const res = await fetch(
-          `http://localhost:5000/bookings?email=${user?.email}`,
+          `https://used-products-resale-server-beta.vercel.app/bookings?email=${user?.email}`,
           {
             headers: {
               authorization: `bearer ${localStorage.getItem("accessToken")}`, //newadd
@@ -29,9 +29,12 @@ const MyOrders = () => {
   });
 
   const handleDelete = (id) => {
-    fetch(`http://localhost:5000/bookings/${id}`, {
-      method: "DELETE",
-    })
+    fetch(
+      `https://used-products-resale-server-beta.vercel.app/bookings/${id}`,
+      {
+        method: "DELETE",
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         if (data.deletedCount > 0) {
@@ -62,7 +65,7 @@ const MyOrders = () => {
             </tr>
           </thead>
           <tbody>
-            {orders.length &&
+            {orders &&
               orders.map((order, i) => (
                 <tr key={order._id}>
                   <th>{i + 1}</th>

@@ -25,7 +25,7 @@ const AddProduct = () => {
           data.image = imgData?.data?.url;
           const product = data;
           // fetch(
-          //   `http://localhost:5000/usedphonecategory?categoryName=${product.categoryName}`,
+          //   `https://used-products-resale-server-beta.vercel.app/usedphonecategory?categoryName=${product.categoryName}`,
           //   {
           //     method: "POST",
           //     headers: {
@@ -39,13 +39,16 @@ const AddProduct = () => {
           //     console.log(data);
           //   });
 
-          fetch("http://localhost:5000/addproducts", {
-            method: "POST",
-            headers: {
-              "content-type": "application/json",
-            },
-            body: JSON.stringify(product),
-          })
+          fetch(
+            "https://used-products-resale-server-beta.vercel.app/addproducts",
+            {
+              method: "POST",
+              headers: {
+                "content-type": "application/json",
+              },
+              body: JSON.stringify(product),
+            }
+          )
             .then((res) => res.json())
             .then((data) => {
               if (data.acknowledged === true) {

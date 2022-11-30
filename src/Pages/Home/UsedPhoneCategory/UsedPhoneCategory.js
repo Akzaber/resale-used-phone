@@ -6,7 +6,9 @@ const UsedPhoneCategory = () => {
   const { data: categories, isLoading } = useQuery({
     queryKey: ["usedphonecategory"],
     queryFn: async () => {
-      const res = await fetch("http://localhost:5000/usedphonecategory");
+      const res = await fetch(
+        "https://used-products-resale-server-beta.vercel.app/usedphonecategory"
+      );
       const data = await res.json();
       return data;
     },

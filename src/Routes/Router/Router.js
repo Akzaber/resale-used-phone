@@ -31,7 +31,9 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/usedphonecategory/${params.id}`),
+          fetch(
+            `https://used-products-resale-server-beta.vercel.app/usedphonecategory/${params.id}`
+          ),
       },
       {
         path: "/blog",
