@@ -38,6 +38,9 @@ const Navbar = () => {
             <li>
               <Link to="/">Home</Link>
             </li>
+            <li>
+              <Link to="/blog">Blog</Link>
+            </li>
             {user?.uid ? (
               <>
                 <li>
@@ -70,7 +73,7 @@ const Navbar = () => {
             )}
           </ul>
         </div>
-        <Link to="/" className="uppercase text-2xl font-bold">
+        <Link to="/" className="uppercase md:text-2xl font-bold">
           Resale Mobile Phone
         </Link>
       </div>

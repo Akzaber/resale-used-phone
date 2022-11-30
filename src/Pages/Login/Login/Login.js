@@ -3,24 +3,20 @@ import { useForm } from "react-hook-form";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../contexts/AuthProvider/AuthProvider";
 import toast from "react-hot-toast";
-import useToken from "../../../hooks/useToken";
+// import useToken from "../../../hooks/useToken";
 
 const Login = () => {
-  const [signInUserEmail, setSignInUserEmail] = useState("");
+  // const [signInUserEmail, setSignInUserEmail] = useState("");
   const [userEmail, setUserEmail] = useState("");
   const [signInError, setSignInError] = useState("");
   const { register, handleSubmit, reset } = useForm();
   const { signIn, googleSignIn, forgetPassword } = useContext(AuthContext);
-  const [token] = useToken(signInUserEmail);
+  // const [token] = useToken(signInUserEmail);
   const navigate = useNavigate();
   const location = useLocation();
 
   const from = location.state?.from?.pathname || "/";
-  console.log("testing", token, from);
-
-  if (token) {
-    navigate(from, { replace: true });
-  }
+  // console.log("testing", token, from);
 
   const handleLogin = (data) => {
     setSignInError("");
@@ -28,7 +24,8 @@ const Login = () => {
       .then((result) => {
         const user = result.user;
         console.log(user);
-        setSignInUserEmail(data?.email);
+        // setSignInUserEmail(data?.email);
+        navigate(from, { replace: true });
       })
       .catch((error) => {
         const message = error?.message;

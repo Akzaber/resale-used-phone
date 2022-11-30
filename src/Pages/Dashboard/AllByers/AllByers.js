@@ -29,6 +29,18 @@ const AllByers = () => {
       });
   };
 
+  // const handleMakeAdmin = (type) => {
+  //   if (type === "user") {
+  //     fetch(`http://localhost:5000/users?userType=${type}`, {
+  //       method: "PUT",
+  //     })
+  //       .then((res) => res.json())
+  //       .then((data) => {
+  //         console.log(data);
+  //       });
+  //   }
+  // };
+
   if (isLoading) {
     return <p>Loading...</p>;
   }
@@ -41,32 +53,42 @@ const AllByers = () => {
             <th>Byer Profile</th>
             <th>Name</th>
             <th>Email</th>
+            <th>Admin</th>
             <th>Operation</th>
           </tr>
         </thead>
         <tbody>
-          {byers.map((byer, i) => (
-            <tr key={byer._id}>
-              <th>{i + 1}</th>
-              <td>
-                <div className="avatar">
-                  <div className="w-16 rounded-full">
-                    <img alt="" src={byer.photoURL} />
+          {byers.length &&
+            byers.map((byer, i) => (
+              <tr key={byer._id}>
+                <th>{i + 1}</th>
+                <td>
+                  <div className="avatar">
+                    <div className="w-16 rounded-full">
+                      <img alt="" src={byer.photoURL} />
+                    </div>
                   </div>
-                </div>
-              </td>
-              <td>{byer.name}</td>
-              <td>{byer.email}</td>
-              <td>
-                <button
-                  onClick={() => handleDelete(byer._id)}
-                  className="btn btn-xs"
-                >
-                  Delete
-                </button>
-              </td>
-            </tr>
-          ))}
+                </td>
+                <td>{byer.name}</td>
+                <td>{byer.email}</td>
+                <td>
+                  <button
+                    // onClick={() => handleMakeAdmin(byer.userType)}
+                    className="btn btn-xs"
+                  >
+                    Admin
+                  </button>
+                </td>
+                <td>
+                  <button
+                    onClick={() => handleDelete(byer._id)}
+                    className="btn btn-xs"
+                  >
+                    Delete
+                  </button>
+                </td>
+              </tr>
+            ))}
         </tbody>
       </table>
     </div>

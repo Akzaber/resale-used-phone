@@ -13,16 +13,18 @@ const MyOrders = () => {
   } = useQuery({
     queryKey: ["myorders", user?.email],
     queryFn: async () => {
-      const res = await fetch(
-        `http://localhost:5000/bookings?email=${user?.email}`,
-        {
-          headers: {
-            authorization: `bearer ${localStorage.getItem("accessToken")}`, //newadd
-          },
-        }
-      );
-      const data = await res.json();
-      return data;
+      if (user?.email) {
+        const res = await fetch(
+          `http://localhost:5000/bookings?email=${user?.email}`,
+          {
+            headers: {
+              authorization: `bearer ${localStorage.getItem("accessToken")}`, //newadd
+            },
+          }
+        );
+        const data = await res.json();
+        return data;
+      }
     },
   });
 
@@ -60,7 +62,7 @@ const MyOrders = () => {
             </tr>
           </thead>
           <tbody>
-            {orders &&
+            {orders.length &&
               orders.map((order, i) => (
                 <tr key={order._id}>
                   <th>{i + 1}</th>
